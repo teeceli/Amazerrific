@@ -1,27 +1,15 @@
-* {
-margin: 0;
-padding: 0;
-}
-nav {
-float: left;
-background:darkgray;
+body {
+	background: #f9e933;
 }
 
-h1 {
-font-family: 'Denk One', sans-serif;
-font-size: xx-large;
+header {
+	background: white;
 }
 
 main {
-background:lightgray;
+	background: white;
 }
 
-body {
-	font-size:100%;
-}
-
-footer {
-background:gray;
-clear:left;
-font-size: smaller
+header, main, footer {
+	min-width: 855px;
 }
