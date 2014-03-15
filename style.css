@@ -2,6 +2,41 @@ body {
 	background: #f9e933;
 }
 
+header, main, footer {
+	min-width: 855px;
+	overflow: auto;
+}
+
+header .container, main .container, footer .container {
+	width: 855px;
+	margin: auto;	
+}
+
+.sitemap {
+	float: right;
+	width: 285px;
+}
+
+.mainText{
+	float: left;
+	width: 570px;
+}
+
+div .contact {
+	float: left;
+	width: 570px;
+}
+
+header h1 {
+	float: left;
+	width: 570px;
+}
+
+nav {
+	float: right;
+	width: 285px;
+}
+
 header {
 	background: white;
 }
@@ -10,6 +45,5 @@ main {
 	background: white;
 }
 
-header, main, footer {
-	min-width: 855px;
-}
+
+
