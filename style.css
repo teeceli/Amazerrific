@@ -1,0 +1,27 @@
+* {
+margin: 0;
+padding: 0;
+}
+nav {
+float: left;
+background:darkgray;
+}
+
+h1 {
+font-family: 'Denk One', sans-serif;
+font-size: xx-large;
+}
+
+main {
+background:lightgray;
+}
+
+body {
+	font-size:100%;
+}
+
+footer {
+background:gray;
+clear:left;
+font-size: smaller
+}
