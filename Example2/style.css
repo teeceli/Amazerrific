@@ -45,6 +45,7 @@ main {
 	border-color: dodgerblue;
 	font-size: 1.2em;
   	font-weight: bold;
+  	border-radius: 5px;
 }
 
 .comment-input button {
@@ -53,7 +54,9 @@ main {
 	font-weight: bold;
 	width: 20px;
 	color: ivory;
-  	background-color: green;
+  	background-color: limegreen;
+  	border-radius: 5px;
+
 }
 
 .comments {
@@ -64,6 +67,8 @@ main {
 
 .comments p {
 	margin-bottom: 10px;
+	padding: 3px;
+	border-radius: 5px;
 }
 
 .comments p:nth-child(even) {
