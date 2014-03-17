@@ -40,6 +40,8 @@ main {
 	float: left;
 }
 
+
+
 .comment-input input {
 	border-width: 2px; 
 	border-color: dodgerblue;
@@ -57,6 +59,10 @@ main {
   	background-color: limegreen;
   	border-radius: 5px;
 
+}
+
+.comment-input button:hover {
+	cursor: pointer;
 }
 
 .comments {
