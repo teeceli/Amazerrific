@@ -55,20 +55,21 @@ $(".tabs a span").toArray().forEach(function (element) {
 		var $tagName = "";
 		var $content = $("<ul>");
 		var $li = $("<li>");
+		var organizedByTagsObject = {};
 
 		$.getJSON("todos.json", function (tagObject) {
-			var organizedByTagsObject = organizeByTags(tagObject);
+			organizedByTagsObject = organizeByTags(tagObject);
+			console.log("organizedByTagsObject: " + organizedByTagsObject);
 
+			organizedByTagsObject.forEach(function (tagGroup) {
+				var $tagName = $("<h3>").text(tagGroup.name);
 
-			tagObject.forEach(function (tagGroup) {
-				var $tagName = $("<h3>").text(tagGroup.description);
-				$("main .content").append($tagName);
+					$content.append($tagName);
+					tagGroup.toDos.forEach(function (toDos) {
+						$content.append( $("<li>").text(toDos));
+					});
 
-				tagGroup.tags.forEach(function (tag) {
-					var $tagText = $("<li>").text(tag);
-					//$content.append( $("<li>").text(tag));
-					$("main .content").append($tagText);
-				});
+					$("main .content").append($content);
 			});
 		});
 
@@ -131,7 +132,8 @@ var organizeByTags = function (tagObject) {
 	var newJsonStringified = JSON.stringify(newJsonArray);
 
 	console.log("newJsonStringified: " + newJsonStringified);
-	return newJsonStringified;
+	var jsonObject = jQuery.parseJSON(newJsonStringified);
+	return jsonObject;
 
 };
 
