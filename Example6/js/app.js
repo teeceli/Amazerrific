@@ -10,6 +10,7 @@ var main = function () {
 		"Get Groceries"
 	];
 
+var organizedByTagsObject = {};
 
 // Much better way of handling the tab implementation. Uses a for loop to iterate through all of the tab elements in the DOM
 $(".tabs a span").toArray().forEach(function (element) {
@@ -23,7 +24,7 @@ $(".tabs a span").toArray().forEach(function (element) {
 
 		var $element = $(element);
 		var $content;
-		var $commentInput;
+		var $commentInput, $descriptionInput;
 
 		// NEWEST
 		if ($element.parent().is(":nth-child(1)")) {
@@ -55,11 +56,11 @@ $(".tabs a span").toArray().forEach(function (element) {
 		var $tagName = "";
 		var $content = $("<ul>");
 		var $li = $("<li>");
-		var organizedByTagsObject = {};
+		//var organizedByTagsObject = {};
 
 		$.getJSON("todos.json", function (tagObject) {
 			organizedByTagsObject = organizeByTags(tagObject);
-			console.log("organizedByTagsObject: " + organizedByTagsObject);
+			//console.log("organizedByTagsObject: " + organizedByTagsObject);
 
 			organizedByTagsObject.forEach(function (tagGroup) {
 				var $tagName = $("<h3>").text(tagGroup.name);
@@ -78,10 +79,43 @@ $(".tabs a span").toArray().forEach(function (element) {
 		} else if ($element.parent().is(":nth-child(4)")) {
 			
 			// Add new item text and button for third tab
-			$commentInput = ($("<span class='comment'><p> Add a New Item: </p></span>"));
-			$commentInput.append($("<input type='text'><button>+</button>"));
+			$descriptionInput = ($("<span class='comment'><p> Description: </p></span>"));
+			$descriptionInput.append($("<input id='description' type='text'>"));
 
+			$commentInput = ($("<span class='comment'><p> Tags: </p></span>"));
+			var $button = $("<button>").text("+");
+
+			//$commentInput.append($("<input class='tagButton' type='text'>"));
+			$commentInput.append($("<input id='tagButton' type='text'>"));
+
+			$commentInput.append($button);
+
+			$button.on("click", function () {
+				//var $tagInput = $(".tagButton");
+				var $tagInput = $("#tagButton").val();
+				var description = $("#description").val();
+				var tagArray = [];
+
+				tagArray = $tagInput.split(",");
+				console.log("tagArray: " + tagArray[0]);
+
+				//toDosObject.push({"description":description, "tags":tagArray});
+				
+				// update toDos
+				//toDos = toDoObjects.map(function (toDo) {
+					//return toDo.description;
+				//});
+
+				// clear out form
+				$("input").val("");
+
+			});
+
+			$("main .content").append($descriptionInput);
+			$("main .content").append("<br>");
 			$("main .content").append($commentInput);
+
+
 
 		}
 		return false;
