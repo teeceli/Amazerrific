@@ -1,5 +1,6 @@
 var express = require("express"),
 	http = require("http"),
+	tweetCounts = require("./Twitter/tweet_counter.js"),
 	app = express();
 
 // set up a static file directory to use for default routing
@@ -21,4 +22,9 @@ app.get("/hello", function (req, res) {
 
 app.get("/goodbye", function (req, res) {
 	res.send("Goodbye World!");
+});
+
+app.get("/counts.json", function (req, res) {
+	// res.json returns the entire object as a JSON file
+	res.json(tweetCounts);
 });
