@@ -1,26 +1,41 @@
 var main = function () {
 	"use strict";
 
-	//$.getJSON("/counts.json", function (wordcounts) {
-	//	console.log("wordcounts: " + wordcounts);
-	//	awesomeCount = wordcounts.awesome;
-	//	$(" .awesomeCount").append(awesomeCount);
-	//});
+	var oldCount = 0;
+	var newCount = 0;
+
+	var insertCountIntoDOM = function (tweets) {
+
+		newCount = tweets.length;
+		
+		// only append if new tweets exist
+		if (newCount != oldCount) {
+			
+			// Clear out tweets so there are no duplicates
+			$(" .awesomeSpan").empty();
+
+			tweets.forEach(function (tweet) {
+				$(" .awesomeSpan").append("<p>");
+				$(" .awesomeSpan").append("-----  ");
+				$(" .awesomeSpan").append(tweet);
+			});
+			
+			oldCount = newCount;
+		}
+	};
 
 	setInterval(function () {
-		$.getJSON("/counts.json", function (wordcounts) {
-			console.log("awesome: " + wordcounts.awesome);
 
-			var awesomeCount = wordcounts.awesome;
-			var $br = $("<br>");
+		$.getJSON("/counts.json", insertCountIntoDOM); 
 
-			$(" .awesomeSpan").append(awesomeCount);
-			$(" .awesomeSpan").append($br);
-		});
-	}, 5000);
+	}, 2000);
+
+	setInterval(function () {
+		// refresh page
+		$(" .awesomeSpan").empty();
+
+	}, 20000);
 
 }
-
-
 
 $(document).ready(main);
