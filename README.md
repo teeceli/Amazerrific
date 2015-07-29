@@ -1,4 +1,4 @@
 Amazerrific
 ===========
 
-Learning Web Development Training App
+Code commits from DIY examples in Learning Web App Development book
